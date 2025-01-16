@@ -1,0 +1,76 @@
+<?php 
+
+defined('BASEPATH') OR exit('Acao nao permitida!');
+
+class Core_model extends CI_Model{
+    public function get_all($table = NULL, $condicao = NULL) {
+        if($table){
+            if(is_array($condicao)){
+                $this->db->where($condicao);
+            }
+            return $this->db->get($table)->result();
+        }else{
+            return FALSE;
+        }
+    }
+    public function get_by_id($table = NULL, $condicao = NULL){
+        if($table && is_array($condicao)){
+            $this->db->where($condicao);
+            $this->db->limit(1);
+
+            return $this->db->get($table)->row();
+        }else{
+            return FALSE;
+        }
+    }
+    public function insert($table = NULL, $data = NULL, $get_last_id = NULL){
+        if($table && is_array($data)){
+            $this->db->insert($table, $data);
+
+            if($get_last_id){
+                $this->session->set_userdata('last_id', $this->db->insert_id());
+            }
+
+            if($this->db->afected_rows() > 0 ){
+                $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso!');
+            }else{
+                $this->session->set_flashdata('error', 'Erro ao salvar os dados!');
+            }
+
+        }else{
+
+        }
+    }
+    public function update($table = NULL, $data = NULL, $condicao = NULL){
+        if($table && is_array($data) && is_array($condicao)){
+            if($this->db->update($table, $data, $condicao)){
+                $this->session->set_flashdata('sucesso', 'Dados atualizados com sucesso!');
+            }else{
+                $this->session->set_flashdata('error', 'Erro ao atualizar dados.');
+            }
+        }else{
+            return FALSE;
+        }
+    }
+    public function delete($table = NULL, $condicao = NULL){
+        $this->db->db_debug = FALSE;
+
+        if($table && is_array($condicao)){
+            $status = $this->db->delete($table, $condicao);
+            $error = $this->db->error();
+
+            if(!$status){
+                foreach ($error as $code){
+                    if($code == 1451){
+                        $this->session->set_flashdata('error', 'Registro em uso!');
+                    }
+                }
+            }else{
+                $this->session->set_flashdata('sucesso', 'Registro excluido!');
+            }
+            $this->db->db_debug = TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+}
