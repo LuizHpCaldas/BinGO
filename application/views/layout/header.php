@@ -9,7 +9,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>binGO!</title>
+  <?php echo (isset($titulo) ? '<title>'.$titulo.'</title>' : '<title>binGO! APP</title>') ?>
+  
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url('public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet'); ?>" type="text/css">

@@ -1,6 +1,5 @@
-
-
-    <?php $this->load->view('layout/sidebar'); ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<?php $this->load->view('layout/sidebar'); ?>
 
     
 
@@ -13,13 +12,20 @@
         <div class="container-fluid">
 
                    <!-- Page Heading -->
-                   <h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
-          <p class="mb-4">.</p>
+                   <nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="<?php echo base_url('/'); ?>">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo; ?></li>
+  </ol>
+</nav>
+
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Usuarios Cadastrados</h6>
+              <a title="Cadastrar Novo Usuario" href="" class="btn btn-success float-right btn-sm" > 
+              <i class="fa-solid fa-user-plus"></i> Novo</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -30,7 +36,7 @@
                       <th>Usuarios</th>
                       <th>Email</th>
                       <th>Ativo</th>
-                      <th>Atividades</th>
+                      <th class="text-right">Atividades</th>
                     </tr>
                   </thead>
 
@@ -41,9 +47,9 @@
                       <td><?php echo $user->username ?></td>
                       <td><?php echo $user->email ?></td>
                       <td><?php echo $user->active ?></td>
-                      <td>
-                        <a title="Editar" href="" class="btn btn-sm btn-primary"> Editar </a>
-                        <a title="Excluir" href="" class="btn btn-sm btn-danger"> Excluir </a>
+                      <td class="text-right">
+                        <a title="Editar" href="" class="btn btn-sm btn-primary"><i class="fa-solid fa-user-pen"></i>  </a>
+                        <a title="Excluir" href="" class="btn btn-sm btn-danger"><i class="fa-solid fa-user-minus"></i>  </a>
                       </td>
                       
                     </tr>
