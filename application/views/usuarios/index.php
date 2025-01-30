@@ -10,6 +10,7 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+          
 
                    <!-- Page Heading -->
                    <nav aria-label="breadcrumb">
@@ -20,6 +21,20 @@
   </ol>
 </nav>
 
+      <!-- Mensagem  -->
+          <?php if($message = $this->session->flashdata('error')): ?>
+            <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;<?php echo $message; ?></strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div> 
+            </div> 
+          <?php endif; ?>
+
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -29,14 +44,14 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered dataTable" width="100%" cellspacing="0">
+                <table class=" table table-bordered dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>#</th>
                       <th>Usuarios</th>
                       <th>Email</th>
                       <th>Ativo</th>
-                      <th class="text-right">Atividades</th>
+                      <th class="text-right no-sort">Atividades</th>
                     </tr>
                   </thead>
 
@@ -48,7 +63,7 @@
                       <td><?php echo $user->email ?></td>
                       <td><?php echo $user->active ?></td>
                       <td class="text-right">
-                        <a title="Editar" href="" class="btn btn-sm btn-primary"><i class="fa-solid fa-user-pen"></i>  </a>
+                        <a title="Editar" href="<?php echo base_url('usuarios/edit/' .$user->id); ?>" class="btn btn-sm btn-primary"><i class="fa-solid fa-user-pen"></i>  </a>
                         <a title="Excluir" href="" class="btn btn-sm btn-danger"><i class="fa-solid fa-user-minus"></i>  </a>
                       </td>
                       
