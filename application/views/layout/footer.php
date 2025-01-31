@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>&copy; binGO! <?php echo date('Y') ?></span>
+            <span>&copy; binGO! <?php echo date('Y') ?> <i class="fa-solid fa-shield-dog"></i></span>
           </div>
         </div>
       </footer>

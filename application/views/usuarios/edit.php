@@ -40,13 +40,13 @@
     <div class="col-md-4">
     <label>Sobrenome</label>
     <input type="text" class="form-control" name="last_name" value="<?php echo $usuario->last_name; ?>">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <?php echo form_error('last_name', '<small class="form-text text-danger">','</small>'); ?>
     </div>
 
     <div class="col-md-4">
     <label>Login</label>
     <input type="email" class="form-control" name="email" value="<?php echo $usuario->email; ?>">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <?php echo form_error('email', '<small class="form-text text-danger">','</small>'); ?>
     </div>
 
     </div>
@@ -56,7 +56,7 @@
     <div class="col-md-4">
     <label>Usuario</label>
     <input type="text" class="form-control" name="username" value="<?php echo $usuario->username; ?>">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <?php echo form_error('username', '<small class="form-text text-danger">','</small>'); ?>
     </div>
 
     <div class="col-md-4">
@@ -79,12 +79,12 @@
     <div class="col-md-6">
     <label>Senha</label>
     <input type="password" class="form-control" name="password" value="">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <?php echo form_error('password', '<small class="form-text text-danger">','</small>'); ?>
     </div>
     <div class="col-md-6">
     <label>Confirme a Senha</label>
     <input type="password" class="form-control" name="confirm_password" value="">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <?php echo form_error('confirm_password', '<small class="form-text text-danger">','</small>'); ?>
     </div>
     <input type="hidden" name="usuario_id" value="<?php echo $usuario->id; ?>">
   
